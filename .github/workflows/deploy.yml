@@ -1,0 +1,22 @@
+name: deploy
+
+on:
+  push:
+    branches:
+      - main
+  repository_dispatch:
+    types:
+      - deploy
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Checkout Blog Posts
+        uses: actions/checkout@v2
+        with:
+          repository: km-blip/cpp-library
+          path: readme.md
