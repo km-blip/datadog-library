@@ -14,11 +14,11 @@ jobs:
         with:
           repository: km-blip/actionTest
           path: actionTest
-          token: ${{ secrets.GITHUB_ACCESS_TOKEN }}
+          token: ${{ secrets.ACCESS_TOKEN }}
       - name: copy target.yml
-        run: cp actionTest/.DS_Store .DS_Store
-      - name: clean repository1
-        run: rm -rf repository1
+        run: cp actionTest/package.json package.json
+      - name: clean actionTest
+        run: rm -rf actionTest
       - name: create PR
         uses: peter-evans/create-pull-request@v3
         with:
