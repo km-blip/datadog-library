@@ -22,7 +22,7 @@ jobs:
       - name: create PR
         uses: peter-evans/create-pull-request@v3
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.ACCESS_TOKEN }}
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           commit-message: 'copy target.yml'
           branch: copy_target
