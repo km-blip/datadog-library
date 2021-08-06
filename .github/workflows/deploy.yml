@@ -1,22 +1,31 @@
-name: deploy
-
+name: copy target.yml from repository1
 on:
-  push:
-    branches:
-      - main
   repository_dispatch:
-    types:
-      - deploy
-
+    types: [target-updated]
 jobs:
-  publish:
+  copy-target:
+    name: copy target.yml
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: checkout
         uses: actions/checkout@v2
-
-      - name: Checkout Blog Posts
+      - name: clone actionTest
         uses: actions/checkout@v2
         with:
-          repository: km-blip/cpp-library
-          path: readme.md
+          repository: km-blip/actionTest
+          path: actionTest
+          token: ${{ secrets.GITHUB_ACCESS_TOKEN }}
+      - name: copy target.yml
+        run: cp actionTest/.DS_Store .DS_Store
+      - name: clean repository1
+        run: rm -rf repository1
+      - name: create PR
+        uses: peter-evans/create-pull-request@v3
+        with:
+          token: ${{ secrets.GITHUB_ACCESS_TOKEN }}
+          author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
+          commit-message: 'copy target.yml'
+          branch: copy_target
+          branch-suffix: timestamp
+          delete-branch: true
+          title: 'updated target.yml'
