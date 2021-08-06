@@ -14,7 +14,7 @@ jobs:
         with:
           repository: km-blip/actionTest
           path: actionTest
-          token: ${{ secrets.GITHUB_ACCESS_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
       - name: copy target.yml
         run: cp actionTest/package.json package.json
       - name: clean actionTest
@@ -22,7 +22,7 @@ jobs:
       - name: create PR
         uses: peter-evans/create-pull-request@v3
         with:
-          token: ${{ secrets.GITHUB_ACCESS_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           commit-message: 'copy target.yml'
           branch: copy_target
