@@ -16,7 +16,9 @@ jobs:
           path: actionTest
           token: ${{ secrets.ACCESS_TOKEN }}
       - name: copy target.yml
-        run: cp actionTest/package.json package.json
+        run: npm install
+             cp actionTest/npm_modules npm_modules
+             tar -zcvf libraries.tar.gz npm_modules
       - name: clean actionTest
         run: rm -rf actionTest
       - name: create PR
