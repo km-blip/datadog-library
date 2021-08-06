@@ -14,7 +14,7 @@ jobs:
         with:
           repository: km-blip/actionTest
           path: actionTest
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.ACCESS_TOKEN }}
       - name: copy target.yml
         run: cp actionTest/package.json package.json
       - name: clean actionTest
