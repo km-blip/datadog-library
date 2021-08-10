@@ -1,0 +1,31 @@
+name: copy target.yml from repository1
+on:
+  repository_dispatch:
+    types: [target-updated]
+jobs:
+  copy-target:
+    name: copy target.yml
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: clone meetruck-ORTools
+        uses: actions/checkout@v2
+        with:
+          repository: MeeTruck/meetruck-ORTools
+          path: meetruck-ORTools
+          token: ${{ secrets.ACCESS_TOKEN }}
+      - name: copy requirements.txt
+        run: cp meetruck-ORTools/requirements.txt requirements.txt
+      - name: clean actionTest
+        run: rm -rf meetruck-ORTools
+      - name: create PR
+        uses: peter-evans/create-pull-request@v3
+        with:
+          token: ${{ secrets.ACCESS_TOKEN }}
+          author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
+          commit-message: 'copy target.yml'
+          branch: copy_target
+          branch-suffix: timestamp
+          delete-branch: true
+          title: 'updated target.yml'
