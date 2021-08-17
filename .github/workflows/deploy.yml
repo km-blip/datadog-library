@@ -19,6 +19,7 @@ jobs:
         run: |
             cp actionTest/package.json package.json
             npm install
+            ls -a
             tar -zcvf libraries.tar.gz npm_modules
       - name: clean actionTest
         run: rm -rf actionTest
