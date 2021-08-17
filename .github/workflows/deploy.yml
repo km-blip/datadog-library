@@ -17,10 +17,9 @@ jobs:
           token: ${{ secrets.ACCESS_TOKEN }}
       - name: copy packages.json
         run: |
-            cd km-blip/cpp-library/
             mkdir -p ${GITHUB_REF#refs/heads/}
             cp actionTest/package.json ${GITHUB_REF#refs/heads/}/package.json
-            cd km-blip/cpp-library/${GITHUB_REF#refs/heads/}/
+            cd /km-blip/cpp-library/${GITHUB_REF#refs/heads/}/
             npm install
             ls -a
             tar -zcvf libraries.tar.gz node_modules
