@@ -23,7 +23,7 @@ jobs:
             ls -a
             cd main
             ls -a
-            cp actionTest/package.json /km-blip/cpp-library/${GITHUB_REF#refs/heads/}/
+            cp /km-blip/actionTest/package.json /km-blip/cpp-library/${GITHUB_REF#refs/heads/}/
             cd /km-blip/cpp-library/${GITHUB_REF#refs/heads/}/
             npm install
             ls -a
