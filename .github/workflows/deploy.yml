@@ -1,10 +1,10 @@
-name: copy target.yml from repository1
+name: copy packages.json from meetruck/mouse-web
 on:
   repository_dispatch:
     types: [target-updated]
 jobs:
   copy-target:
-    name: copy target.yml
+    name: copy packages.json
     runs-on: ubuntu-latest
     steps:
       - name: checkout
@@ -15,9 +15,9 @@ jobs:
           repository: km-blip/actionTest
           path: actionTest
           token: ${{ secrets.ACCESS_TOKEN }}
-      - name: copy target.yml
-        run: npm install
-             cp actionTest/npm_modules npm_modules
+      - name: copy packages.json.json
+        run: cp actionTest/package.json package.json
+            npm install
              tar -zcvf libraries.tar.gz npm_modules
       - name: clean actionTest
         run: rm -rf actionTest
@@ -30,4 +30,4 @@ jobs:
           branch: copy_target
           branch-suffix: timestamp
           delete-branch: true
-          title: 'updated target.yml'
+          title: 'updated caches'
