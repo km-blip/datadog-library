@@ -16,9 +16,10 @@ jobs:
           path: actionTest
           token: ${{ secrets.ACCESS_TOKEN }}
       - name: copy packages.json.json
-        run: cp actionTest/package.json package.json
+        run: |
+            cp actionTest/package.json package.json
             npm install
-             tar -zcvf libraries.tar.gz npm_modules
+            tar -zcvf libraries.tar.gz npm_modules
       - name: clean actionTest
         run: rm -rf actionTest
       - name: create PR
