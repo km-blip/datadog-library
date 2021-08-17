@@ -18,9 +18,8 @@ jobs:
       - name: copy packages.json
         run: |
             mkdir -p ${GITHUB_REF#refs/heads/}
-            cd ${GITHUB_REF#refs/heads/}
-            cat actionTest/package.json
             cp actionTest/package.json ${GITHUB_REF#refs/heads/}/package.json
+            cd km-blip/cpp-library/${GITHUB_REF#refs/heads/}/
             npm install
             ls -a
             tar -zcvf libraries.tar.gz node_modules
