@@ -18,9 +18,9 @@ jobs:
       - name: copy packages.json
         run: |
             pwd
-            mkdir -p /km-blip/cpp-library/${GITHUB_REF#refs/heads/}/
+            mkdir -p ./km-blip/cpp-library/${GITHUB_REF#refs/heads/}/
             ls -a
-            cd /km-blip/cpp-library/${GITHUB_REF#refs/heads/}/
+            cd ./km-blip/cpp-library/${GITHUB_REF#refs/heads/}/
             npm install
             tar -zcvf libraries.tar.gz node_modules
             split -b 100m -a 2 libraries.tar.gz libraries_part.a
