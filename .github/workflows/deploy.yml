@@ -21,7 +21,9 @@ jobs:
             mkdir -p ./km-blip/cpp-library/${GITHUB_REF#refs/heads/}/
             cd ./
             mkdir -p ${GITHUB_REF#refs/heads/}/
+            cd main/
             ls -a
+            
             cp actionTest/package.json /km-blip/cpp-library/${GITHUB_REF#refs/heads/}/package.json
             cd /km-blip/cpp-library/${GITHUB_REF#refs/heads/}/
             npm install
