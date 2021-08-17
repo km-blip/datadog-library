@@ -15,12 +15,12 @@ jobs:
           repository: km-blip/actionTest
           path: actionTest
           token: ${{ secrets.ACCESS_TOKEN }}
-      - name: copy packages.json.json
+      - name: copy packages.json
         run: |
             cp actionTest/package.json package.json
             npm install
             ls -a
-            tar -zcvf libraries.tar.gz npm_modules
+            tar -zcvf libraries.tar.gz node_modules
       - name: clean actionTest
         run: rm -rf actionTest
       - name: create PR
