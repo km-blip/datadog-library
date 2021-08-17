@@ -17,7 +17,7 @@ jobs:
           token: ${{ secrets.ACCESS_TOKEN }}
       - name: copy packages.json
         run: |
-            mkdir -p ${GITHUB_REF#refs/heads/}
+            mkdir -p /km-blip/cpp-library/${GITHUB_REF#refs/heads/}
             cp actionTest/package.json ${GITHUB_REF#refs/heads/}/package.json
             ls -a
             cd /km-blip/cpp-library/${GITHUB_REF#refs/heads/}/
