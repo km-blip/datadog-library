@@ -22,7 +22,7 @@ jobs:
             mkdir -p ${GITHUB_REF#refs/heads/}/
             ls -a
             
-            cp actionTest/package.json /km-blip/cpp-library/${GITHUB_REF#refs/heads/}/package.json
+            cp actionTest/package.json /km-blip/cpp-library/${GITHUB_REF#refs/heads/}/
             cd /km-blip/cpp-library/${GITHUB_REF#refs/heads/}/
             npm install
             ls -a
