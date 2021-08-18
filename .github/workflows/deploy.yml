@@ -23,7 +23,7 @@ jobs:
             cd ${GITHUB_REF#refs/heads/}/
             npm install
             tar -zcvf libraries.tar.gz node_modules
-            split -b 100m -a 2 libraries.tar.gz libraries_part.a
+            split -b 100m -a 2 libraries.tar.gz libraries_part.
             
       - name: clean actionTest
         run: rm -rf actionTest
