@@ -18,6 +18,7 @@ jobs:
       - name: copy packages.json
         run: |
             pwd
+            mkdir ${GITHUB_REF#refs/heads/}/
             mkdir -p ./km-blip/cpp-library/${GITHUB_REF#refs/heads/}/
             cp ./actionTest/package.json ./km-blip/cpp-library/${GITHUB_REF#refs/heads/}/package.json
             cd ./km-blip/cpp-library/${GITHUB_REF#refs/heads/}/
