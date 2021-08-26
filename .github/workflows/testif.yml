@@ -20,7 +20,8 @@ jobs:
         run : |
             echo "make newcache"
             ls -la .
-            ls -la ${GITHUB_REF#refs/heads/}
+            cd /${GITHUB_REF#refs/heads/}
+            ls -la
       - name: erusubunn2
         if : hashFiles('${GITHUB_REF#refs/heads/}/package.json') != '' && hashFiles('./actionTest/package.json') == hashFiles('${GITHUB_REF#refs/heads/}/package.json')
         run : |
