@@ -21,3 +21,9 @@ jobs:
       - name: erusubunn
         if : hashFiles('${GITHUB_REF#refs/heads/}/package.json') != '' && hashFiles('./actionTest/package.json') != hashFiles('${GITHUB_REF#refs/heads/}/package.json')
         run : echo "False"
+      - name: ifbunn2
+        if : hashFiles('${GITHUB_REF#refs/heads/}/package.json') == '' && hashFiles('./actionTest/package.json') != hashFiles('${GITHUB_REF#refs/heads/}/package.json')
+        run : echo "Trie2"
+      - name: erusubunn2
+        if : hashFiles('${GITHUB_REF#refs/heads/}/package.json') == '' && hashFiles('./actionTest/package.json') != hashFiles('${GITHUB_REF#refs/heads/}/package.json')
+        run : echo "False2"
