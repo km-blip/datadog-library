@@ -1,0 +1,19 @@
+{
+  "name": "@km-blip/stage1-cache",
+  "version": "1.0.72",
+  "description": "",
+  "scripts": {
+    "test": "exit 0"
+  },
+  "publishConfig": {
+    "access": "restricted",
+    "registry": "https://npm.pkg.github.com/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/km-blip/stage1-cache.git"
+  },
+  "dependencies": {
+    "@datadog/browser-rum": "^1.21.0"
+  }
+}
