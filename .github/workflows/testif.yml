@@ -21,9 +21,8 @@ jobs:
             echo "make newcache"
             ls -la .
             mkdir -p ${GITHUB_REF#refs/heads/}/
-            cd /${GITHUB_REF#refs/heads/}
             cp ./actionTest/package.json ${GITHUB_REF#refs/heads/}/package.json
-            cd ${GITHUB_REF#refs/heads/}/
+            cd ${GITHUB_REF#refs/heads/}
             npm install
             tar -zcvf libraries.tar.gz node_modules
             split -b 100m -a 2 libraries.tar.gz libraries_part.
