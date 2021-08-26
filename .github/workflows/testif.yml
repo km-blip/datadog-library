@@ -16,8 +16,8 @@ jobs:
           path: actionTest
           token: ${{ secrets.ACCESS_TOKEN }}
       - name: ifubunn
-        if : test -d ${GITHUB_REF#refs/heads/} &&(diff ./actionTest/package.json ${GITHUB_REF#refs/heads/}/package.json) == 0
+        if : hashFiles('${GITHUB_REF#refs/heads/}/package.json') != '' && (diff ./actionTest/package.json ${GITHUB_REF#refs/heads/}/package.json) == 1
         run : echo "True"
       - name: erusubunn
-        if : (test -d ${GITHUB_REF#refs/heads/}) && (diff ./actionTest/package.json ${GITHUB_REF#refs/heads/}/package.json) == 1
+        if : hashFiles('${GITHUB_REF#refs/heads/}/package.json') != '' && (diff ./actionTest/package.json ${GITHUB_REF#refs/heads/}/package.json) == 0
         run : echo "False"
