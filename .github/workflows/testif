@@ -1,0 +1,22 @@
+name: copy packages.json from meetruck/mouse-web
+on:
+  repository_dispatch:
+    types: [target-updated]
+jobs:
+  copy-target:
+    name: IFtest
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: clone actionTest
+        uses: actions/checkout@v2
+        with:
+          repository: km-blip/actionTest
+          path: actionTest
+          token: ${{ secrets.ACCESS_TOKEN }}
+      - name: ifubunn
+        if : |
+            test -d ${GITHUB_REF#refs/heads/}
+            ! diff ./actionTest/package.json ${GITHUB_REF#refs/heads/}/package.json 
+        run : echo "True"
