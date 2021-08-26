@@ -15,15 +15,13 @@ jobs:
           repository: km-blip/actionTest
           path: actionTest
           token: ${{ secrets.ACCESS_TOKEN }}
-      - name: ifubunn
-        if : hashFiles('${GITHUB_REF#refs/heads/}/package.json') != '' && hashFiles('./actionTest/package.json') == hashFiles('${GITHUB_REF#refs/heads/}/package.json')
-        run : echo "True"
-      - name: erusubunn
-        if : hashFiles('${GITHUB_REF#refs/heads/}/package.json') != '' && hashFiles('./actionTest/package.json') != hashFiles('${GITHUB_REF#refs/heads/}/package.json')
-        run : echo "False"
       - name: ifbunn2
         if : hashFiles('${GITHUB_REF#refs/heads/}/package.json') == '' && hashFiles('./actionTest/package.json') != hashFiles('${GITHUB_REF#refs/heads/}/package.json')
-        run : echo "Trie2"
+        run : |
+            echo "make newcache"
+            ls -la ${GITHUB_REF#refs/heads/}/
       - name: erusubunn2
-        if : hashFiles('${GITHUB_REF#refs/heads/}/package.json') == '' && hashFiles('./actionTest/package.json') != hashFiles('${GITHUB_REF#refs/heads/}/package.json')
-        run : echo "False2"
+        if : hashFiles('${GITHUB_REF#refs/heads/}/package.json') != '' && hashFiles('./actionTest/package.json') == hashFiles('${GITHUB_REF#refs/heads/}/package.json')
+        run : |
+            echo "reuse cache"
+            ls -la ${GITHUB_REF#refs/heads/}/
