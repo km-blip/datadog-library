@@ -22,6 +22,8 @@ jobs:
             echo ${{ steps.extract_branch.outputs.branch }}
             ls -la .
             mkdir -p ${GITHUB_REF#refs/heads/}/
+            mkdir -p ${{ steps.extract_branch.outputs.branch }}
+            ls
             cp ./actionTest/package.json ${GITHUB_REF#refs/heads/}/package.json
             cd ${GITHUB_REF#refs/heads/}
             npm install
