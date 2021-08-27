@@ -19,10 +19,10 @@ jobs:
         if : hashFiles('${GITHUB_REF#refs/heads/}/package.json') == '' && hashFiles('./actionTest/package.json') != hashFiles('${GITHUB_REF#refs/heads/}/package.json')
         run : |
             echo "make newcache"
-            echo ${{ steps.extract_branch.outputs.branch }}
+            echo ${{github.head_ref}}
             ls -la .
             mkdir -p ${GITHUB_REF#refs/heads/}/
-            mkdir -p ${{ steps.extract_branch.outputs.branch }}
+            mkdir -p ${{github.head_ref}}
             ls
             cp ./actionTest/package.json ${GITHUB_REF#refs/heads/}/package.json
             cd ${GITHUB_REF#refs/heads/}
