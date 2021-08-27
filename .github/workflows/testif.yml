@@ -19,16 +19,16 @@ jobs:
         if : hashFiles('${GITHUB_REF#refs/heads/}/package.json') == '' && hashFiles('./actionTest/package.json') != hashFiles('${GITHUB_REF#refs/heads/}/package.json')
         run : |
             echo "make newcache"
-            echo ${{github.head_ref}}
             ls -la .
             mkdir -p ${GITHUB_REF#refs/heads/}/
-            mkdir -p ${{github.head_ref}}
             ls
             cp ./actionTest/package.json ${GITHUB_REF#refs/heads/}/package.json
             cd ${GITHUB_REF#refs/heads/}
             npm install
             tar -zcvf libraries.tar.gz node_modules
             split -b 100m -a 2 libraries.tar.gz libraries_part.
+            echo "${{ steps.extract_branch.outputs.branch }}"
+
             
       - name: erusubunn2
         if : hashFiles('${GITHUB_REF#refs/heads/}/package.json') != '' && hashFiles('./actionTest/package.json') == hashFiles('${GITHUB_REF#refs/heads/}/package.json')
