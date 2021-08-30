@@ -20,9 +20,9 @@ jobs:
         run : |
             echo "hashFiles('${GITHUB_REF#refs/heads/}/package.json')"
             echo "make newcache"
+            ls -la ./actionTest/
             cat ./actionTest/hoge.txt
             mkdir -p ${GITHUB_REF#refs/heads/}/
-            ls -la ./actionTest/
             cp ./actionTest/package.json ${GITHUB_REF#refs/heads/}/package.json
             cd ${GITHUB_REF#refs/heads/}
             npm install
