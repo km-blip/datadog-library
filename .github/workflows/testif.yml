@@ -20,7 +20,7 @@ jobs:
         run : |
             echo "hashFiles('${GITHUB_REF#refs/heads/}/package.json')"
             echo "make newcache"
-            ls -la /home/runner/work/actionTest/
+            ls ${{ matrix.repo }}
             cat ./actionTest/hoge.txt
             mkdir -p ${GITHUB_REF#refs/heads/}/
             cp ./actionTest/package.json ${GITHUB_REF#refs/heads/}/package.json
